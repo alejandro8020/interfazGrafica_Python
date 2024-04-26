@@ -8,12 +8,13 @@ import util.util_imagenes as util_img
 class FormularioMaestroDesign(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.logo = util_img.leer_imagen("./imagenes/logo_sameep.png",(560,136))
+        self.logo = util_img.leer_imagen("./imagenes/logo_sameep.png",(300,136))
         self.perfil = util_img.leer_imagen("./imagenes/logo_sameep.png",(150,100))
         self.config_window()
         self.paneles()
         self.controles_barra_superior()
         self.controles_menu_lateral()
+        self.controles_cuerpo()
 
     def config_window(self):
         #Configuracion inicial de ventana
@@ -79,6 +80,11 @@ class FormularioMaestroDesign(tk.Tk):
         ]
         for text, icon, button in button_info:
             self.configurar_boton_menu(button, text, icon, font_awesome, ancho_menu, alto_menu)
+
+    def controles_cuerpo(self):
+        # Imagen en el cuerpo principal
+        label = tk.Label(self.cuerpo_principal, image=self.logo, bg=COLOR_CUERPO_PRINCIPAL)
+        label.place(x=0, y=0, relwidth=1, relheight=1)
 
     def configurar_boton_menu(self, button, text, icon, font_awesome, ancho_menu, alto_menu):
         button.config(text=f"{icon}  {text}", anchor="w", font=font_awesome,
