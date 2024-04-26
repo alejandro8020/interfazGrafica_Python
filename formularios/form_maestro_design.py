@@ -45,7 +45,8 @@ class FormularioMaestroDesign(tk.Tk):
         self.labelTitulo.pack(side=tk.LEFT)
 
         #Boton del menu lateral
-        self.buttonMenuLateral = tk.Button(self.barra_superior, text="\uf0c9", font=font_awesome, bd=0, bg=COLOR_BARRA_SUPERIOR, fg="white")
+        self.buttonMenuLateral = tk.Button(self.barra_superior, text="\uf0c9", font=font_awesome,
+                                           command=self.toggle_panel, bd=0, bg=COLOR_BARRA_SUPERIOR, fg="white")
         self.buttonMenuLateral.pack(side=tk.LEFT)
 
         # Etiqueta de informacion
@@ -96,4 +97,12 @@ class FormularioMaestroDesign(tk.Tk):
     def on_leave(self, event, button):
         #Restaurar estilo al salir el raton
         button.config(bg=COLOR_MENU_LATERAL, fg='white')
+
+    def toggle_panel(self):
+        #Altera visibilidad del menu lateral
+        if self.menu_lateral.winfo_ismapped():
+            self.menu_lateral.pack_forget()
+        else:
+            self.menu_lateral.pack(side=tk.LEFT, fill='y')
+
 
